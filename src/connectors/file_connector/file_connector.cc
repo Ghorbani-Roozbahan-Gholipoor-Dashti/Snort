@@ -1,3 +1,29 @@
+
+Skip to content
+This repository
+
+    Pull requests
+    Issues
+    Gist
+
+    @Ghorbani-Roozbahan-Gholipoor-Dashti
+
+66
+247
+
+    75
+
+snortadmin/snort3
+Code
+Issues 2
+Pull requests 0
+Wiki
+Pulse
+Graphs
+snort3/src/connectors/file_connector/file_connector.cc
+1266d36 on Apr 21
+Ed Borgoyn Fix some HA-SC memory leaks.
+352 lines (284 sloc) 10.4 KB
 //--------------------------------------------------------------------------
 // Copyright (C) 2015-2016 Cisco and/or its affiliates. All rights reserved.
 //
@@ -297,6 +323,7 @@ static void file_connector_tterm(Connector* connector)
     FileConnector* file_connector = (FileConnector*)connector;
 
     file_connector->file.close();
+    delete file_connector;
 }
 
 static ConnectorCommon* file_connector_ctor(Module* m)
@@ -347,4 +374,8 @@ SO_PUBLIC const BaseApi* snort_plugins[] =
 #else
 const BaseApi* file_connector = &file_connector_api.base;
 #endif
+
+    Contact GitHub API Training Shop Blog About 
+
+    © 2016 GitHub, Inc. Terms Privacy Security Status Help 
 
